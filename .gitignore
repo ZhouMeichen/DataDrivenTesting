@@ -1,3 +1,9 @@
+/target/
+
+/test-output/
+
+*.exe
+
 # Compiled class file
 *.class
 

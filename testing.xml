@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="false" name="Suite1">
+  <test name="Test1">
+    <classes preserve-order = "true">    
+      <class name="com.test.TC_Login"/>
+      <class name="com.test.TC_NewCustomer"/>
+    </classes>
+  </test>
+</suite>
