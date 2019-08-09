@@ -18,6 +18,12 @@ public class LoginPage {
 
     @FindBy(how = How.NAME, using = "title")
     WebElement titleText;
+    
+    @FindBy(how = How.ID, using = "message23")
+    WebElement idMsg;
+    
+    @FindBy(how = How.ID, using = "message18")
+    WebElement pwdMsg;
  
 
     
@@ -29,7 +35,6 @@ public class LoginPage {
         pwd.sendKeys(strTxt);
     }
     
-    
     public void clickLoginButton() {
         loginbtn.click();
     }
@@ -38,5 +43,20 @@ public class LoginPage {
         return titleText.getText();
     }
     
+    public String getIdMsg() {
+        return idMsg.getText();
+    }
+    
+    public String getPwdMsg() {
+        return pwdMsg.getText();
+    }
+    
+    public void clickId() {
+        uid.click();
+    }
+    
+    public void clickPwd() {
+        pwd.click();
+    }
     
 }

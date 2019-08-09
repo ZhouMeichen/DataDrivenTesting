@@ -9,84 +9,92 @@ import util.AlertClass;
 import util.DriverManager;
 
 public class AddCustomerSteps {
+    HomePage objHome;
+    AddCustomerPage objAddCustomer;
+    CustomerRegMsgPage objCustomerRegMsg;
+    
+    public AddCustomerSteps() {
+        objHome = PageFactory.initElements(DriverManager.driver, HomePage.class);
+        objAddCustomer = PageFactory.initElements(DriverManager.driver, AddCustomerPage.class);
+        objCustomerRegMsg = PageFactory.initElements(DriverManager.driver, CustomerRegMsgPage.class);
+    }
+    
     public void access() {
-        HomePage hp = PageFactory.initElements(DriverManager.driver, HomePage.class);
-        hp.clickNewCustomerLink();
+        objHome.clickNewCustomerLink();
     }
     
     public void submit(String name, String gender, String birth, String addr, String city, String state, String pin, String mobile, String email, String pwd) {
-        AddCustomerPage acp = PageFactory.initElements(DriverManager.driver, AddCustomerPage.class); 
-        acp.setName(name);
-        acp.setGender(gender);
-        acp.setBirth(birth);
-        acp.setAddr(addr);
-        acp.setCity(city);
-        acp.setState(state);
-        acp.setPin(pin);
-        acp.setMobile(mobile);
-        acp.setEmail(email);
-        acp.setPwd(pwd);
+         
+        objAddCustomer.setName(name);
+        objAddCustomer.setGender(gender);
+        objAddCustomer.setBirth(birth);
+        objAddCustomer.setAddr(addr);
+        objAddCustomer.setCity(city);
+        objAddCustomer.setState(state);
+        objAddCustomer.setPin(pin);
+        objAddCustomer.setMobile(mobile);
+        objAddCustomer.setEmail(email);
+        objAddCustomer.setPwd(pwd);
         
-        acp.submitBtnClick();
+        objAddCustomer.submitBtnClick();
         
     }
     
     public void clickWithData(String name, String addr, String city, String state, String pin, String mobile, String email) {
-        AddCustomerPage acp = PageFactory.initElements(DriverManager.driver, AddCustomerPage.class); 
-        acp.setName(name);
-        acp.clickName();
-//        acp.setGender(gender);
-//        acp.setBirth(birth);
-        acp.setAddr(addr);
-        acp.clickAddr();
+         
+        objAddCustomer.setName(name);
+        objAddCustomer.clickName();
+
+        objAddCustomer.setAddr(addr);
+        objAddCustomer.clickAddr();
         
-        acp.setCity(city);
-        acp.clickCity();
+        objAddCustomer.setCity(city);
+        objAddCustomer.clickCity();
         
-        acp.setState(state);
-        acp.clickState();
+        objAddCustomer.setState(state);
+        objAddCustomer.clickState();
         
-        acp.setPin(pin);
-        acp.clickPin();
+        objAddCustomer.setPin(pin);
+        objAddCustomer.clickPin();
         
-        acp.setMobile(mobile);
-        acp.clickMobile();
+        objAddCustomer.setMobile(mobile);
+        objAddCustomer.clickMobile();
         
-        acp.setEmail(email);
-        acp.clickEmail();
-//        acp.setPwd(pwd);
+        objAddCustomer.setEmail(email);
+        objAddCustomer.clickEmail();
+
         
-        acp.clickName();
+        objAddCustomer.clickName();
     }
     
     public void click() {
-        AddCustomerPage acp = PageFactory.initElements(DriverManager.driver, AddCustomerPage.class);
-        acp.clickName();
-        acp.clickBirth();
-        acp.clickAddr();
-        acp.clickCity();
-        acp.clickState();
-        acp.clickPin();
-        acp.clickMobile();
-        acp.clickEmail();
-        acp.clickPwd();
-        acp.clickName();
+        
+        objAddCustomer.clickName();
+        objAddCustomer.clickBirth();
+        objAddCustomer.clickAddr();
+        objAddCustomer.clickCity();
+        objAddCustomer.clickState();
+        objAddCustomer.clickPin();
+        objAddCustomer.clickMobile();
+        objAddCustomer.clickEmail();
+        objAddCustomer.clickPwd();
+        objAddCustomer.clickName();
     }
     
     public String[] getInvalidDataMsg() {
-        AddCustomerPage acp = PageFactory.initElements(DriverManager.driver, AddCustomerPage.class);
-        return new String[] {acp.getNameMsg(), acp.getAddrMsg(), acp.getCityMsg(), acp.getStateMsg(), acp.getPinMsg(), acp.getMobileMsg(), acp.getEmailMsg()};
+        
+        return new String[] {objAddCustomer.getNameMsg(), objAddCustomer.getAddrMsg(), objAddCustomer.getCityMsg(), objAddCustomer.getStateMsg(), objAddCustomer.getPinMsg(), objAddCustomer.getMobileMsg(), objAddCustomer.getEmailMsg()};
     
     }
     
     public String[] getBlankMsg() {
-        AddCustomerPage acp = PageFactory.initElements(DriverManager.driver, AddCustomerPage.class);
-        return new String[] {acp.getNameMsg(), acp.getBirthMsg(), acp.getAddrMsg(), acp.getCityMsg(), acp.getStateMsg(), acp.getPinMsg(), acp.getMobileMsg(), acp.getEmailMsg(), acp.getPwdMsg()};
+        
+        return new String[] {objAddCustomer.getNameMsg(), objAddCustomer.getBirthMsg(), objAddCustomer.getAddrMsg(), objAddCustomer.getCityMsg(), objAddCustomer.getStateMsg(), objAddCustomer.getPinMsg(), objAddCustomer.getMobileMsg(), objAddCustomer.getEmailMsg(), objAddCustomer.getPwdMsg()};
     }
     
     public String[] getResultTable() {
-        CustomerRegMsgPage crmp = PageFactory.initElements(DriverManager.driver, CustomerRegMsgPage.class);
-        return new String[] {crmp.getMsg(), crmp.getId(), crmp.getName(), crmp.getGender(), crmp.getBirth(), crmp.getAddress(), crmp.getCity(), crmp.getState(), crmp.getPin(), crmp.getMobile(), crmp.getEmail()};
+        
+        return new String[] {objCustomerRegMsg.getMsg(), objCustomerRegMsg.getId(), objCustomerRegMsg.getName(), objCustomerRegMsg.getGender(), objCustomerRegMsg.getBirth(), objCustomerRegMsg.getAddress(), objCustomerRegMsg.getCity(), objCustomerRegMsg.getState(), objCustomerRegMsg.getPin(), objCustomerRegMsg.getMobile(), objCustomerRegMsg.getEmail()};
         
     }
     

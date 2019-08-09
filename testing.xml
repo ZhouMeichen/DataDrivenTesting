@@ -4,7 +4,7 @@
   <test name="Test1">
     <classes preserve-order = "true">    
       <class name="com.test.TC_Login"/>
-      <class name="com.test.TC_NewCustomer"/>
+      <!-- <class name="com.test.TC_NewCustomer"/> -->
     </classes>
   </test>
 </suite>

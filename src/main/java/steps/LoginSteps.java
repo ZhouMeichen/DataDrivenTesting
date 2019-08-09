@@ -8,14 +8,25 @@ import util.AlertClass;
 import util.DriverManager;
 
 public class LoginSteps {
+    LoginPage objLogin;
+    HomePage objHome;
+    
+    public LoginSteps() {
+        objLogin = PageFactory.initElements(DriverManager.driver, LoginPage.class);
+        objHome = PageFactory.initElements(DriverManager.driver, HomePage.class);
+    }
+    
     public void login(String strTxtUid, String strTxtPwd){
-        LoginPage objLogin = PageFactory.initElements(DriverManager.driver, LoginPage.class);
 
         objLogin.setUid(strTxtUid);
         objLogin.setPwd(strTxtPwd);
 
-
         objLogin.clickLoginButton();   
+    }
+    
+    public void click() {
+        objLogin.clickId();
+        objLogin.clickPwd();
     }
     
     public String getAlertMsg() {
@@ -23,7 +34,10 @@ public class LoginSteps {
     }
     
     public String getLogoutLink() {
-        HomePage objHome = PageFactory.initElements(DriverManager.driver, HomePage.class);
         return objHome.getLogoutTxt();
+    }
+    
+    public String[] getBlankMsg() {
+        return new String[] {objLogin.getIdMsg(),objLogin.getPwdMsg()};
     }
 }
