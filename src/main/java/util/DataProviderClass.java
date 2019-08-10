@@ -12,12 +12,7 @@ public class DataProviderClass {
     public static Object[][] getLoginValidData() {
         ExcelHandler handler = new ExcelHandler("TestData.xlsx","account");
         ArrayList<ArrayList<String>> list = handler.readData();
-        Object[][] data = new Object[list.size()][];
-        for (int i=0;i<list.size();i++) {
-            data[i] = list.get(i).toArray();
-        }
-
-        return data;
+        return list.stream().map(a -> a.toArray()).toArray(s -> new Object[s][]);
     }
     
     @DataProvider(name = "LoginWithInvalidData")
