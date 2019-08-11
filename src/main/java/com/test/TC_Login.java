@@ -20,6 +20,7 @@ public class TC_Login {
     public void beforeMethod() {
         System.out.println("BeforeMethod");
         dm = new DriverManager("firefox","http://demo.guru99.com/V4");
+        
     }
     
     @AfterMethod
@@ -30,8 +31,7 @@ public class TC_Login {
     
     
     @Test(dataProvider="LoginWithValidData",dataProviderClass=DataProviderClass.class, priority = 1)
-    public void verifyValidLogin(String uid, String pwd) {
-        
+    public void verifyValidLogin(String uid, String pwd) {        
         LoginSteps ls = new LoginSteps();
         ls.login(uid, pwd);
         
@@ -41,7 +41,6 @@ public class TC_Login {
     
     @Test(dataProvider="LoginWithInvalidData",dataProviderClass=DataProviderClass.class, priority = 2)
     public void verifyInvalidLogin(String uid, String pwd) {
-        
         LoginSteps ls = new LoginSteps();
         ls.login(uid, pwd);
         

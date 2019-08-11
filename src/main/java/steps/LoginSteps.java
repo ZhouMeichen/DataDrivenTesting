@@ -30,7 +30,7 @@ public class LoginSteps {
     }
     
     public String getAlertMsg() {
-        return AlertClass.getMsg(DriverManager.driver);
+        return AlertClass.getMsgAccept(DriverManager.driver);
     }
     
     public String getLogoutLink() {

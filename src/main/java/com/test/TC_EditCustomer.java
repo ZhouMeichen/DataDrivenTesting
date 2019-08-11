@@ -7,7 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import steps.AddCustomerSteps;
+
 import steps.EditCustomerSteps;
 import steps.LoginSteps;
 import util.DataProviderClass;
@@ -15,30 +15,27 @@ import util.DriverManager;
 
 public class TC_EditCustomer {
     DriverManager dm;
-    String customerId;
     
     @BeforeClass
     public void beforeClass() {
         System.out.println("BeforeClass");   
         dm = new DriverManager("chrome","http://demo.guru99.com/V4");
         LoginSteps ls = new LoginSteps();
-        ls.login("mngr213347", "ytatArY");
-        customerId = "73582";
-        
+        ls.login("mngr213347", "ytatArY");      
     }
 
     
     @AfterClass
     public void afterClass() {
         System.out.println("AfterClass");
-        dm.quit();
-        
+        dm.quit();       
     }
     
-    @Test(dataProvider="EditCustomerSubmitValidData",dataProviderClass=DataProviderClass.class, priority = 1)
-    public void verifySubmitValidData(String addr, String city, String state, String pin, String mobile, String email, String expMsg) {
+    @Test(dataProvider="EditCustomerValidData",dataProviderClass=DataProviderClass.class, priority = 1)
+    public void verifySubmitValidData(String id, String addr, String city, String state, String pin, String mobile, String email, String expMsg) {
         EditCustomerSteps ecs = new EditCustomerSteps();
-        ecs.access(customerId);
+        ecs.access(id);
+
         ecs.submit(addr, city, state, pin, mobile, email);
 
         Assert.assertTrue(ecs.getResultTable()[0].contains(expMsg));
@@ -51,43 +48,34 @@ public class TC_EditCustomer {
         
     }
     
+   
     
-    @Test(dataProvider="EditCustomerSubmitBlankData", dataProviderClass=DataProviderClass.class, priority = 2)
-    public void verifySubmitBlankData(String addr, String city, String state, String pin, String mobile, String email, String expMsg) {
+    @Test(dataProvider="EditCustomerInvalidData", dataProviderClass=DataProviderClass.class, priority = 2)
+    public void verifySubmitInvalidData(String id, String addr, String city, String state, String pin, String mobile, String email, String expMsg, String expMsg1, String expMsg2, String expMsg3, String expMsg4, String expMsg5, String expMsg6) {
         EditCustomerSteps ecs = new EditCustomerSteps();
-        ecs.access(customerId);
+        ecs.access(id);
         ecs.submit(addr, city, state, pin, mobile, email);
 
         String str = ecs.getAlertMsg();
         Assert.assertTrue(str.contains(expMsg));
         
-    }
-    
-   
-    
-    @Test(dataProvider="EditCustomerInputInvalidData", dataProviderClass=DataProviderClass.class, priority = 3)
-    public void verifyFrontEndErrorMsg(String addr, String city, String state, String pin, String mobile, String email,  String expMsg1, String expMsg2, String expMsg3, String expMsg4, String expMsg5) {
-        EditCustomerSteps ecs = new EditCustomerSteps();
-        ecs.access(customerId);
-        ecs.clickWithData(addr, city, state, pin, mobile, email);
-
-      Assert.assertTrue(ecs.getInvalidDataMsg()[0].contains(expMsg2));
-      Assert.assertTrue(ecs.getInvalidDataMsg()[1].contains(expMsg1));
-      Assert.assertTrue(ecs.getInvalidDataMsg()[2].contains(expMsg1));
-      Assert.assertTrue(ecs.getInvalidDataMsg()[3].contains(expMsg3));
-      Assert.assertTrue(ecs.getInvalidDataMsg()[4].contains(expMsg4));
-      Assert.assertTrue(ecs.getInvalidDataMsg()[5].contains(expMsg5));
+      Assert.assertTrue(ecs.getInvalidDataMsg()[0].contains(expMsg1));
+      Assert.assertTrue(ecs.getInvalidDataMsg()[1].contains(expMsg2));
+      Assert.assertTrue(ecs.getInvalidDataMsg()[2].contains(expMsg3));
+      Assert.assertTrue(ecs.getInvalidDataMsg()[3].contains(expMsg4));
+      Assert.assertTrue(ecs.getInvalidDataMsg()[4].contains(expMsg5));
+      Assert.assertTrue(ecs.getInvalidDataMsg()[5].contains(expMsg6));
           
   }
     
-    @Test(priority = 4)
-    public void verifySubmitWithoutChange() {
+    @Test(dataProvider="EditCustomerWithoutChangeData", dataProviderClass=DataProviderClass.class, priority = 3)
+    public void verifySubmitWithoutChange(String id, String expMsg) {
         EditCustomerSteps ecs = new EditCustomerSteps();
-        ecs.access(customerId);
+        ecs.access(id);
         ecs.submit();
 
         String str = ecs.getAlertMsg();
-        Assert.assertTrue(str.contains("No Changes made to Customer records"));
+        Assert.assertTrue(str.contains(expMsg));
           
   }
 

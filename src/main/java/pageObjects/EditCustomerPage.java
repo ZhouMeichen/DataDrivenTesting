@@ -32,6 +32,9 @@ public class EditCustomerPage {
     @FindBy(how = How.NAME, using = "emailid")
     WebElement email;
     
+    @FindBy(how = How.XPATH, using = "//table[@class=\"layout\"]//table/tbody/tr[4]/td[1]")
+    WebElement nameLabel;
+    
     @FindBy(how = How.ID, using = "message3")
     WebElement addrMsg;
     
@@ -152,6 +155,10 @@ public class EditCustomerPage {
     
     public void resetBtnClick() {
         resetBtn.click();
+    }
+    
+    public void clickNameLabel() {
+        nameLabel.click();
     }
     
     

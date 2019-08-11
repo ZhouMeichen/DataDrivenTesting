@@ -49,7 +49,7 @@ public class CustomerRegMsgPage {
     }
     
     public String getId() {
-        System.out.println(id.getText());
+        System.out.println("Customer ID: "+id.getText());
         return id.getText();
     }
     
@@ -86,7 +86,7 @@ public class CustomerRegMsgPage {
     }
     
     public String getEmail() {
-        System.out.println(email.getText());
+        System.out.println("Email: "+email.getText());
         return email.getText();
     }
     

@@ -28,10 +28,12 @@ public class LoginPage {
 
     
     public void setUid(String strTxt) {
+        uid.clear();
         uid.sendKeys(strTxt);;
     }
     
     public void setPwd(String strTxt) {
+        pwd.clear();
         pwd.sendKeys(strTxt);
     }
     

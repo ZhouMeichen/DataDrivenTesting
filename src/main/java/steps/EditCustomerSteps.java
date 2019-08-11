@@ -2,8 +2,7 @@ package steps;
 
 import org.openqa.selenium.support.PageFactory;
 
-import pageObjects.AddCustomerPage;
-import pageObjects.CustomerRegMsgPage;
+
 import pageObjects.CustomerUpdateMsgPage;
 import pageObjects.EditCustomerEnterIDPage;
 import pageObjects.EditCustomerPage;
@@ -12,10 +11,11 @@ import util.AlertClass;
 import util.DriverManager;
 
 public class EditCustomerSteps {
-    HomePage objHome;
+    
     EditCustomerEnterIDPage objEditCustomerEnterID;
     EditCustomerPage objEditCustomer;
     CustomerUpdateMsgPage ObjCustomerUpdateMsg;
+    HomePage objHome;
     
     public EditCustomerSteps() {
         objHome = PageFactory.initElements(DriverManager.driver, HomePage.class);
@@ -37,11 +37,22 @@ public class EditCustomerSteps {
          
 
         objEditCustomer.setAddr(addr);
+        objEditCustomer.clickNameLabel();
+        
         objEditCustomer.setCity(city);
+        objEditCustomer.clickNameLabel();
+        
         objEditCustomer.setState(state);
+        objEditCustomer.clickNameLabel();
+        
         objEditCustomer.setPin(pin);
+        objEditCustomer.clickNameLabel();
+        
         objEditCustomer.setMobile(mobile);
+        objEditCustomer.clickNameLabel();
+        
         objEditCustomer.setEmail(email);
+        objEditCustomer.clickNameLabel();
         
         objEditCustomer.submitBtnClick();
         
@@ -51,41 +62,14 @@ public class EditCustomerSteps {
         
         objEditCustomer.submitBtnClick();
     }
-    
-    public void clickWithData(String addr, String city, String state, String pin, String mobile, String email) {
-         
 
-        objEditCustomer.setAddr(addr);
-        objEditCustomer.clickAddr();
-        
-        objEditCustomer.setCity(city);
-        objEditCustomer.clickCity();
-        
-        objEditCustomer.setState(state);
-        objEditCustomer.clickState();
-        
-        objEditCustomer.setPin(pin);
-        objEditCustomer.clickPin();
-        
-        objEditCustomer.setMobile(mobile);
-        objEditCustomer.clickMobile();
-        
-        objEditCustomer.setEmail(email);
-        objEditCustomer.clickEmail();
-
-        
-        objEditCustomer.clickAddr();
-    }
-    
-    
-    
+            
     public String[] getInvalidDataMsg() {
         
         return new String[] { objEditCustomer.getAddrMsg(), objEditCustomer.getCityMsg(), objEditCustomer.getStateMsg(), objEditCustomer.getPinMsg(), objEditCustomer.getMobileMsg(), objEditCustomer.getEmailMsg()};
     
     }
-    
-    
+        
     public String[] getResultTable() {
         
         return new String[] {ObjCustomerUpdateMsg.getMsg(), ObjCustomerUpdateMsg.getAddress(), ObjCustomerUpdateMsg.getCity(), ObjCustomerUpdateMsg.getState(), ObjCustomerUpdateMsg.getPin(), ObjCustomerUpdateMsg.getMobile(), ObjCustomerUpdateMsg.getEmail()};
@@ -93,6 +77,6 @@ public class EditCustomerSteps {
     }
     
     public String getAlertMsg() {
-        return (AlertClass.getMsg(DriverManager.driver));
+        return AlertClass.getMsgAccept(DriverManager.driver);
     }
 }

@@ -9,8 +9,8 @@ import util.AlertClass;
 import util.DriverManager;
 
 public class AddCustomerSteps {
-    HomePage objHome;
     AddCustomerPage objAddCustomer;
+    HomePage objHome;
     CustomerRegMsgPage objCustomerRegMsg;
     
     public AddCustomerSteps() {
@@ -24,72 +24,78 @@ public class AddCustomerSteps {
     }
     
     public void submit(String name, String gender, String birth, String addr, String city, String state, String pin, String mobile, String email, String pwd) {
-         
+              
         objAddCustomer.setName(name);
+        objAddCustomer.clickNameLabel();
+        
         objAddCustomer.setGender(gender);
+        
         objAddCustomer.setBirth(birth);
+        objAddCustomer.clickNameLabel();
+
         objAddCustomer.setAddr(addr);
+        objAddCustomer.clickNameLabel();
+        
         objAddCustomer.setCity(city);
+        objAddCustomer.clickNameLabel();
+        
         objAddCustomer.setState(state);
+        objAddCustomer.clickNameLabel();
+        
         objAddCustomer.setPin(pin);
+        objAddCustomer.clickNameLabel();
+        
         objAddCustomer.setMobile(mobile);
+        objAddCustomer.clickNameLabel();
+        
         objAddCustomer.setEmail(email);
+        objAddCustomer.clickNameLabel();
+        
         objAddCustomer.setPwd(pwd);
+        objAddCustomer.clickNameLabel();
         
         objAddCustomer.submitBtnClick();
         
     }
     
-    public void clickWithData(String name, String addr, String city, String state, String pin, String mobile, String email) {
-         
-        objAddCustomer.setName(name);
-        objAddCustomer.clickName();
-
-        objAddCustomer.setAddr(addr);
-        objAddCustomer.clickAddr();
-        
-        objAddCustomer.setCity(city);
-        objAddCustomer.clickCity();
-        
-        objAddCustomer.setState(state);
-        objAddCustomer.clickState();
-        
-        objAddCustomer.setPin(pin);
-        objAddCustomer.clickPin();
-        
-        objAddCustomer.setMobile(mobile);
-        objAddCustomer.clickMobile();
-        
-        objAddCustomer.setEmail(email);
-        objAddCustomer.clickEmail();
-
-        
-        objAddCustomer.clickName();
+    public void submit() {
+        objAddCustomer.submitBtnClick();
     }
     
-    public void click() {
-        
-        objAddCustomer.clickName();
-        objAddCustomer.clickBirth();
-        objAddCustomer.clickAddr();
-        objAddCustomer.clickCity();
-        objAddCustomer.clickState();
-        objAddCustomer.clickPin();
-        objAddCustomer.clickMobile();
-        objAddCustomer.clickEmail();
-        objAddCustomer.clickPwd();
-        objAddCustomer.clickName();
-    }
+//    public void clickWithData(String name, String addr, String city, String state, String pin, String mobile, String email, String pwd) {
+//         
+//        objAddCustomer.setName(name);
+//        objAddCustomer.clickNameLabel();
+//
+//        objAddCustomer.setAddr(addr);
+//        objAddCustomer.clickNameLabel();
+//        
+//        objAddCustomer.setCity(city);
+//        objAddCustomer.clickNameLabel();
+//        
+//        objAddCustomer.setState(state);
+//        objAddCustomer.clickNameLabel();
+//        
+//        objAddCustomer.setPin(pin);
+//        objAddCustomer.clickNameLabel();
+//        
+//        objAddCustomer.setMobile(mobile);
+//        objAddCustomer.clickNameLabel();
+//        
+//        objAddCustomer.setEmail(email);
+//        objAddCustomer.clickNameLabel();
+//        
+//        objAddCustomer.setPwd(pwd);
+//        objAddCustomer.clickNameLabel();
+//
+//        
+//    }
     
+
     public String[] getInvalidDataMsg() {
         
-        return new String[] {objAddCustomer.getNameMsg(), objAddCustomer.getAddrMsg(), objAddCustomer.getCityMsg(), objAddCustomer.getStateMsg(), objAddCustomer.getPinMsg(), objAddCustomer.getMobileMsg(), objAddCustomer.getEmailMsg()};
+        return new String[] {objAddCustomer.getNameMsg(), "", objAddCustomer.getBirthMsg(), objAddCustomer.getAddrMsg(), objAddCustomer.getCityMsg(), objAddCustomer.getStateMsg(), objAddCustomer.getPinMsg(), objAddCustomer.getMobileMsg(), objAddCustomer.getEmailMsg(), objAddCustomer.getPwdMsg()};
     
-    }
-    
-    public String[] getBlankMsg() {
-        
-        return new String[] {objAddCustomer.getNameMsg(), objAddCustomer.getBirthMsg(), objAddCustomer.getAddrMsg(), objAddCustomer.getCityMsg(), objAddCustomer.getStateMsg(), objAddCustomer.getPinMsg(), objAddCustomer.getMobileMsg(), objAddCustomer.getEmailMsg(), objAddCustomer.getPwdMsg()};
     }
     
     public String[] getResultTable() {
@@ -99,6 +105,6 @@ public class AddCustomerSteps {
     }
     
     public String getAlertMsg() {
-        return (AlertClass.getMsg(DriverManager.driver));
+        return AlertClass.getMsgAccept(DriverManager.driver);
     }
 }

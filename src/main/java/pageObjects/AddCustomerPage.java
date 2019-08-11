@@ -38,7 +38,10 @@ public class AddCustomerPage {
 
     @FindBy(how = How.NAME, using = "password")
     WebElement pwd;
-
+    
+    @FindBy(how = How.XPATH, using = "//table[@class=\"layout\"]//table/tbody/tr[4]/td[1]")
+    WebElement nameLabel;
+    
     @FindBy(how = How.NAME, using = "sub")
     WebElement submitBtn;
     
@@ -73,6 +76,7 @@ public class AddCustomerPage {
     WebElement pwdMsg;
     
     public void setName(String str) {
+        name.clear();
         name.sendKeys(str);
     }
     
@@ -85,34 +89,42 @@ public class AddCustomerPage {
     }
     
     public void setBirth(String str) {
+//        birth.clear();
         birth.sendKeys(str);
     }
     
     public void setAddr(String str) {
+        address.clear();
         address.sendKeys(str);
     }
     
     public void setCity(String str) {
+        city.clear();
         city.sendKeys(str);
     }
     
     public void setState(String str) {
+        state.clear();
         state.sendKeys(str);
     }
     
     public void setPin(String str) {
+        pin.clear();
         pin.sendKeys(str);
     }
     
     public void setMobile(String str) {
+        mobile.clear();
         mobile.sendKeys(str);
     }
     
     public void setEmail(String str) {
+        email.clear();
         email.sendKeys(str);
     }
     
     public void setPwd(String str) {
+        pwd.clear();
         pwd.sendKeys(str);
     }
     
@@ -160,40 +172,9 @@ public class AddCustomerPage {
         return pwdMsg.getText();
     }
     
-    public void clickName() {
-        name.click();
+    public void clickNameLabel() {
+        nameLabel.click();
     }
     
-    public void clickBirth() {
-        birth.click();
-    }
-    
-    public void clickAddr() {
-        address.click();
-    }
-    
-    public void clickCity() {
-        city.click();
-    }
-    
-    public void clickState() {
-        state.click();
-    }
-    
-    public void clickPin() {
-        pin.click();
-    }
-    
-    public void clickMobile() {
-        mobile.click();
-    }
-    
-    public void clickEmail() {
-        email.click();
-    }
-    
-    public void clickPwd() {
-        pwd.click();
-    }
     
 }
