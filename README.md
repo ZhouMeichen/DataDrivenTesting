@@ -16,6 +16,12 @@ In the page class, web elements are identified by @FindBy Annotation. Also, all 
 ## 4. util
 In the util package, there are Data provider class, Driver manager, Excel handler, Alert class. If the project needs another utilities such as popup window handler, it can be added into this package.
 
+## 5. test-output
+The test results are demonstrated in the HTML format and generated under test-output folder.
+
+## 6. testng.xml
+To run test cases in a group by defining test suites, tests, packages, classes, or methods in the testng.xml.
+
 # Application under test
 ### Login functionality
 Login page has two textboxes (UserID, Password) and two buttons (Login, Reset).
