@@ -19,6 +19,7 @@ public class DriverManager {
         }
         
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
         driver.get(initUrl);
     }
     

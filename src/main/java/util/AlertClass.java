@@ -4,7 +4,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 
 public class AlertClass {
-    public String getMsg(WebDriver driver) {
+    public static String getMsg(WebDriver driver) {
         Alert alert = driver.switchTo().alert();
         String msg = alert.getText();
         return msg;
