@@ -35,6 +35,9 @@ public class HomePage {
     @FindBy(how = How.XPATH, using = "//a[@href='BalEnqInput.php']")
     WebElement balEnquiryLink;
     
+    @FindBy(how = How.XPATH, using = "//a[@href='MiniStatementInput.php']")
+    WebElement miniStatementLink;
+    
     @FindBy(how = How.XPATH, using = "//a[@href='Logout.php']")
     WebElement logoutLink;
 
@@ -74,7 +77,9 @@ public class HomePage {
         balEnquiryLink.click();
     }
     
-    
+    public void clickMiniStatementLink() {
+        miniStatementLink.click();
+    }
     
     public void clickLogoutLink() {
         logoutLink.click();

@@ -173,5 +173,14 @@ public class DataProviderClass {
                 {"#","Please fill all fields","Special characters are not allowed"} 
             };
     }
+    
+    @DataProvider(name = "MiniStatementValidData")
+    public static Object[][] getMiniStatementValidData() {
+            return new Object[][] {
+                {"66956","121090","1","w","2019-08-11","1"},                
+                {"66956","121089","1","w","2019-08-11","1"},
+                {"66956","121708","12","d","2019-08-18","12"} 
+            };
+    }
 
 }

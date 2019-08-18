@@ -62,35 +62,6 @@ public class AddCustomerSteps {
         objAddCustomer.submitBtnClick();
     }
     
-//    public void clickWithData(String name, String addr, String city, String state, String pin, String mobile, String email, String pwd) {
-//         
-//        objAddCustomer.setName(name);
-//        objAddCustomer.clickNameLabel();
-//
-//        objAddCustomer.setAddr(addr);
-//        objAddCustomer.clickNameLabel();
-//        
-//        objAddCustomer.setCity(city);
-//        objAddCustomer.clickNameLabel();
-//        
-//        objAddCustomer.setState(state);
-//        objAddCustomer.clickNameLabel();
-//        
-//        objAddCustomer.setPin(pin);
-//        objAddCustomer.clickNameLabel();
-//        
-//        objAddCustomer.setMobile(mobile);
-//        objAddCustomer.clickNameLabel();
-//        
-//        objAddCustomer.setEmail(email);
-//        objAddCustomer.clickNameLabel();
-//        
-//        objAddCustomer.setPwd(pwd);
-//        objAddCustomer.clickNameLabel();
-//
-//        
-//    }
-    
 
     public String[] getInvalidDataMsg() {
         

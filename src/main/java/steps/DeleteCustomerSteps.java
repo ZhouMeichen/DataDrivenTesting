@@ -28,15 +28,6 @@ public class DeleteCustomerSteps {
         objDeleteCustomer.submitBtnClick();
     }
     
-//    public void submit() {
-//        objDeleteCustomer.submitBtnClick();
-//    }
-    
-//    public void clickWithData(String str) {
-//        objDeleteCustomer.setId(str);
-//        objDeleteCustomer.clickIdLable();
-//    }
-    
     public String getInvalidDataMsg() {
         return objDeleteCustomer.getIdMsg();
     }
