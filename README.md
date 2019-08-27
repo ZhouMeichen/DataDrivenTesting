@@ -49,3 +49,6 @@ There are two web pages for this part, WithdrawalInput page and Withdrawal page.
 
 ### Balance Enquiry functionality
 After submitting account number in the BalEnqInput page, the detailed information of this account including type of account and balance will be shown in the BalEnquiry page.
+
+### Mini Statement functionality
+After submitting account number in the MiniStatementInput page, the table of bank statements will be shown in the MiniStatement page.
