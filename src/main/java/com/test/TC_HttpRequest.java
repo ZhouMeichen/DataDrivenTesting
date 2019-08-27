@@ -4,11 +4,12 @@ package com.test;
 
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import util.HttpHandler;
 import util.JSONHandler;
-
+@Listeners(util.Listener.class)
 public class TC_HttpRequest {
     @Test
     public void testhttp() {

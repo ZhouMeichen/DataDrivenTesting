@@ -4,6 +4,7 @@ import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 
@@ -11,7 +12,7 @@ import steps.LoginSteps;
 import steps.MiniStatementSteps;
 import util.DataProviderClass;
 import util.DriverManager;
-
+@Listeners(util.Listener.class)
 public class TC_MiniStatement {
     DriverManager dm;
     

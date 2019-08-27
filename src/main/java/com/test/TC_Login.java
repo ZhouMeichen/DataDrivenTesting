@@ -10,6 +10,7 @@ import steps.LoginSteps;
 import util.DataProviderClass;
 import util.DriverManager;
 
+@Listeners(util.Listener.class)
 
 public class TC_Login {
     

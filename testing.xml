@@ -4,21 +4,20 @@
   <test name="Test_Login">
     <classes preserve-order = "true">    
       <class name="com.test.TC_Login"/>
-      
     </classes>
   </test>
   <test name="Test_Customer">
     <classes preserve-order = "true">
   <class name="com.test.TC_NewCustomer"/>
       <class name="com.test.TC_EditCustomer"/>
-      <class name="com.test.TC_DeleteCustomer"/>
+      <!-- <class name="com.test.TC_DeleteCustomer"/> -->
           </classes>
   </test>
 </suite>
-<suite parallel="false" name="Suite1" verbose="1" >
+<!-- <suite parallel="false" name="Suite1" verbose="1" >
   <test name="Regression1"   >
     <packages>
       <package name="test.sample" />
    </packages>
  </test>
-</suite>
+</suite> -->
