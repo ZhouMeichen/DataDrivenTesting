@@ -41,9 +41,28 @@ public class TC_MiniStatement {
         mss.access();
         mss.submit(account);
         String[] statement = mss.getResult(transactionId);
-        assertTrue(statement[1].equals(amount));
-        assertTrue(statement[2].equals(type));
-        assertTrue(statement[3].equals(date));
-        assertTrue(statement[4].equals(desc));
+        try {
+            assertTrue(statement[1].equals(amount));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            assertTrue(statement[2].equals(type));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            assertTrue(statement[3].equals(date));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            assertTrue(statement[4].equals(desc));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
     }
 }

@@ -42,10 +42,29 @@ public class TC_NewAccount {
         
         aas.submit(cusId, type, amount);
 
-        Assert.assertTrue(aas.getResultTable()[0].contains(expMsg));
-        Assert.assertTrue(aas.getResultTable()[2].contains(cusId));
-        Assert.assertTrue(aas.getResultTable()[5].contains(type));
-        Assert.assertTrue(aas.getResultTable()[7].contains(amount));
+        try {
+            Assert.assertTrue(aas.getResultTable()[0].contains(expMsg));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(aas.getResultTable()[2].contains(cusId));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(aas.getResultTable()[5].contains(type));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(aas.getResultTable()[7].contains(amount));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
     
     }
     
@@ -57,10 +76,23 @@ public class TC_NewAccount {
         aas.submit(id, type, amount);
 
         String str = aas.getAlertMsg();
-        Assert.assertTrue(str.contains(expMsg1));
+        try {
+            Assert.assertTrue(str.contains(expMsg1));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
         
-      Assert.assertTrue(aas.getInvalidDataMsg()[0].contains(expMsg2));
-      Assert.assertTrue(aas.getInvalidDataMsg()[1].contains(expMsg3));
+        try {
+            Assert.assertTrue(aas.getInvalidDataMsg()[0].contains(expMsg2));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(aas.getInvalidDataMsg()[1].contains(expMsg3));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
         
     }
     

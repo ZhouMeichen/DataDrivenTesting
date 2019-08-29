@@ -43,11 +43,29 @@ public class TC_BalanceEnquiry {
         bs.access();
         
         bs.submit(account);
-
-        Assert.assertTrue(bs.getResultTable()[0].contains(expMsg));
-        Assert.assertTrue(bs.getResultTable()[1].contains(account));
-        Assert.assertTrue(bs.getResultTable()[2].contains(type));
-        Assert.assertTrue(bs.getResultTable()[3].contains(balance));
+        try {
+            Assert.assertTrue(bs.getResultTable()[0].contains(expMsg));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(bs.getResultTable()[1].contains(account));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {       
+            Assert.assertTrue(bs.getResultTable()[2].contains(type));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(bs.getResultTable()[3].contains(balance));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
     
     }
     
@@ -60,9 +78,17 @@ public class TC_BalanceEnquiry {
         bs.submit(account);
 
         String str = bs.getAlertMsg();
-        Assert.assertTrue(str.contains(expMsg1));
+        try {
+            Assert.assertTrue(str.contains(expMsg1));
+        }catch(Exception e) {
+            System.out.println(e);
+        }
         
-      Assert.assertTrue(bs.getInvalidDataMsg()[0].contains(expMsg2));
+        try {
+            Assert.assertTrue(bs.getInvalidDataMsg()[0].contains(expMsg2));
+        }catch(Exception e) {
+            System.out.println(e);
+        }
         
     }
     

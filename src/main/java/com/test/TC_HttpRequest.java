@@ -48,13 +48,40 @@ public class TC_HttpRequest {
         http.sendRequest();
         
         JSONHandler jh = new JSONHandler();
+        try {
+            Assert.assertTrue(jh.validateJSONSchema(http.getResponseBody(), schema), "The JSON Schema is not as expected");
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
         
-        Assert.assertTrue(jh.validateJSONSchema(http.getResponseBody(), schema), "The JSON Schema is not as expected");
-        Assert.assertTrue(http.getStatusCode()==201, "The status code is not 201");
-        Assert.assertTrue(http.containsHeader("Content-Type"), "There is no Content-Type header");
+        try {
+            Assert.assertTrue(http.getStatusCode()==201, "The status code is not 201");
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
         
-        Assert.assertTrue(http.getContentType().contains("application/json"), "Content type is not json");
-        Assert.assertTrue(http.getReasonPhrase().equals("Created"), "Message of status line is wrong");
-        Assert.assertTrue(http.getResponseTime()<2000, "Response time is higher than 2,000 ms");
+        try {
+            Assert.assertTrue(http.containsHeader("Content-Type"), "There is no Content-Type header");
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(http.getContentType().contains("application/json"), "Content type is not json");
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(http.getReasonPhrase().equals("Created"), "Message of status line is wrong");
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(http.getResponseTime()<2000, "Response time is higher than 2,000 ms");
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
     }
 }

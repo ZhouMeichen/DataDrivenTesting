@@ -41,9 +41,18 @@ public class TC_DeleteCustomer {
         dcs.access();
         dcs.submit(id);
         String str = dcs.getAlertMsg();
+        try {
         Assert.assertTrue(str.contains(expMsg1));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
         str = dcs.getAlertMsg();
-        Assert.assertTrue(str.contains(expMsg2));
+        try {
+            Assert.assertTrue(str.contains(expMsg2));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
 
     }
     
@@ -55,9 +64,17 @@ public class TC_DeleteCustomer {
         dcs.submit(id);
         
         String str = dcs.getAlertMsg();
-        Assert.assertTrue(str.contains(expMsg1));
+        try {
+            Assert.assertTrue(str.contains(expMsg1));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
         str = dcs.getAlertMsg();
-        Assert.assertTrue(str.contains(expMsg2));
+        try {
+            Assert.assertTrue(str.contains(expMsg2));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
 
     }
     
@@ -71,8 +88,17 @@ public class TC_DeleteCustomer {
         dcs.submit(id);
 
         String str = dcs.getAlertMsg();
-        Assert.assertTrue(str.contains(expMsg1));
-        Assert.assertTrue(dcs.getInvalidDataMsg().contains(expMsg2));
+        try {
+            Assert.assertTrue(str.contains(expMsg1));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(dcs.getInvalidDataMsg().contains(expMsg2));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
           
   }
 

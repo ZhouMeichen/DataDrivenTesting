@@ -41,13 +41,41 @@ public class TC_Deposit {
         ds.access();
         
         ds.submit(account, amount, desc);
-
-        Assert.assertTrue(ds.getResultTable()[0].contains(expMsg));
-        Assert.assertTrue(ds.getResultTable()[2].contains(account));
-        Assert.assertTrue(ds.getResultTable()[3].contains(amount));
-        Assert.assertTrue(ds.getResultTable()[4].contains("Deposit"));
-        Assert.assertTrue(ds.getResultTable()[5].contains(desc));
-        Assert.assertTrue(ds.getResultTable()[6].contains(balance));
+        try {
+            Assert.assertTrue(ds.getResultTable()[0].contains(expMsg));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(ds.getResultTable()[2].contains(account));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(ds.getResultTable()[3].contains(amount));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(ds.getResultTable()[4].contains("Deposit"));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(ds.getResultTable()[5].contains(desc));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(ds.getResultTable()[6].contains(balance));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
     
     }
     
@@ -60,11 +88,29 @@ public class TC_Deposit {
         ds.submit(account, amount, desc);
 
         String str = ds.getAlertMsg();
-        Assert.assertTrue(str.contains(expMsg1));
+        try {
+            Assert.assertTrue(str.contains(expMsg1));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
         
-      Assert.assertTrue(ds.getInvalidDataMsg()[0].contains(expMsg2));
-      Assert.assertTrue(ds.getInvalidDataMsg()[1].contains(expMsg3));
-      Assert.assertTrue(ds.getInvalidDataMsg()[2].contains(expMsg4));
+        try {
+            Assert.assertTrue(ds.getInvalidDataMsg()[0].contains(expMsg2));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(ds.getInvalidDataMsg()[1].contains(expMsg3));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(ds.getInvalidDataMsg()[2].contains(expMsg4));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
         
     }
     

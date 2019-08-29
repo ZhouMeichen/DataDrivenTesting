@@ -41,13 +41,41 @@ public class TC_Withdrawal {
         ws.access();
         
         ws.submit(account, amount, desc);
-
-        Assert.assertTrue(ws.getResultTable()[0].contains(expMsg));
-        Assert.assertTrue(ws.getResultTable()[2].contains(account));
-        Assert.assertTrue(ws.getResultTable()[3].contains(amount));
-        Assert.assertTrue(ws.getResultTable()[4].contains("Withdrawal"));
-        Assert.assertTrue(ws.getResultTable()[5].contains(desc));
-        Assert.assertTrue(ws.getResultTable()[6].contains(balance));
+        try {
+            Assert.assertTrue(ws.getResultTable()[0].contains(expMsg));
+        }catch(Exception e) {
+            System.out.println(e);
+        }
+        
+        try {
+            Assert.assertTrue(ws.getResultTable()[2].contains(account));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(ws.getResultTable()[3].contains(amount));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(ws.getResultTable()[4].contains("Withdrawal"));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(ws.getResultTable()[5].contains(desc));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(ws.getResultTable()[6].contains(balance));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
     
     }
     
@@ -60,11 +88,29 @@ public class TC_Withdrawal {
         ws.submit(account, amount, desc);
 
         String str = ws.getAlertMsg();
-        Assert.assertTrue(str.contains(expMsg1));
+        try {
+            Assert.assertTrue(str.contains(expMsg1));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
         
-      Assert.assertTrue(ws.getInvalidDataMsg()[0].contains(expMsg2));
-      Assert.assertTrue(ws.getInvalidDataMsg()[1].contains(expMsg3));
-      Assert.assertTrue(ws.getInvalidDataMsg()[2].contains(expMsg4));
+        try {
+            Assert.assertTrue(ws.getInvalidDataMsg()[0].contains(expMsg2));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(ws.getInvalidDataMsg()[1].contains(expMsg3));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
+        
+        try {
+            Assert.assertTrue(ws.getInvalidDataMsg()[2].contains(expMsg4));
+        }catch(Exception e) {
+            System.out.println(e);
+        } 
         
     }
     
