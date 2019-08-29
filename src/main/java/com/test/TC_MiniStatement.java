@@ -10,6 +10,7 @@ import org.testng.annotations.Test;
 
 import steps.LoginSteps;
 import steps.MiniStatementSteps;
+import util.ConfigProperties;
 import util.DataProviderClass;
 import util.DriverManager;
 @Listeners(util.Listener.class)
@@ -20,9 +21,9 @@ public class TC_MiniStatement {
     @BeforeClass
     public void beforeClass() {
         System.out.println("BeforeClass");   
-        dm = new DriverManager("chrome","http://demo.guru99.com/V4");
+        dm = new DriverManager(ConfigProperties.get("defaultBrowser"),ConfigProperties.get("url"));
         LoginSteps ls = new LoginSteps();
-        ls.login("mngr213347", "ytatArY");
+        ls.login(ConfigProperties.get("username"), ConfigProperties.get("password"));
 
     }
 

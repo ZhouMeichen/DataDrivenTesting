@@ -6,7 +6,7 @@ import org.testng.annotations.*;
 
 
 import steps.LoginSteps;
-
+import util.ConfigProperties;
 import util.DataProviderClass;
 import util.DriverManager;
 
@@ -20,8 +20,7 @@ public class TC_Login {
     @BeforeMethod
     public void beforeMethod() {
         System.out.println("BeforeMethod");
-        dm = new DriverManager("firefox","http://demo.guru99.com/V4");
-        
+        dm = new DriverManager("firefox",ConfigProperties.get("url"));
     }
     
     @AfterMethod

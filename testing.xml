@@ -1,18 +1,20 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <?xml version="1.0" encoding="UTF-8"?>
-<suite parallel="false" name="TestSuite_Functional">
+<suite parallel="false" name="TestSuite_Functional" configfailurepolicy="skip">
+ <listeners>
+      <listener class-name="util.Listener" />
+  </listeners>
   <test name="Test_Login">
     <classes preserve-order = "true">    
       <class name="com.test.TC_Login"/>
     </classes>
   </test>
-  <test name="Test_Customer">
+ <!-- <test name="Test_Customer">
     <classes preserve-order = "true">
-  <class name="com.test.TC_NewCustomer"/>
+   <class name="com.test.TC_NewCustomer"/> 
       <class name="com.test.TC_EditCustomer"/>
-      <!-- <class name="com.test.TC_DeleteCustomer"/> -->
+		<class name="com.test.TC_DeleteCustomer"/>
           </classes>
-  </test>
+  </test> -->
 </suite>
 <!-- <suite parallel="false" name="Suite1" verbose="1" >
   <test name="Regression1"   >
