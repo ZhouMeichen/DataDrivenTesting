@@ -2,13 +2,13 @@ package com.test;
 
 
 
-
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import util.HttpHandler;
 import util.JSONHandler;
+
 @Listeners(util.Listener.class)
 public class TC_HttpRequest {
     @Test
@@ -48,40 +48,20 @@ public class TC_HttpRequest {
         http.sendRequest();
         
         JSONHandler jh = new JSONHandler();
-        try {
-            Assert.assertTrue(jh.validateJSONSchema(http.getResponseBody(), schema), "The JSON Schema is not as expected");
-        }catch(Exception e) {
-            System.out.println(e);
-        } 
+        SoftAssert softAssert = new SoftAssert();
+            softAssert.assertTrue(jh.validateJSONSchema(http.getResponseBody(), schema), "The JSON Schema is not as expected");
+
+
+            softAssert.assertTrue(http.getStatusCode()==201, "The status code is not 201");
         
-        try {
-            Assert.assertTrue(http.getStatusCode()==201, "The status code is not 201");
-        }catch(Exception e) {
-            System.out.println(e);
-        } 
+            softAssert.assertTrue(http.containsHeader("Content-Type"), "There is no Content-Type header");
         
-        try {
-            Assert.assertTrue(http.containsHeader("Content-Type"), "There is no Content-Type header");
-        }catch(Exception e) {
-            System.out.println(e);
-        } 
+            softAssert.assertTrue(http.getContentType().contains("application/json"), "Content type is not json");
         
-        try {
-            Assert.assertTrue(http.getContentType().contains("application/json"), "Content type is not json");
-        }catch(Exception e) {
-            System.out.println(e);
-        } 
-        
-        try {
-            Assert.assertTrue(http.getReasonPhrase().equals("Created"), "Message of status line is wrong");
-        }catch(Exception e) {
-            System.out.println(e);
-        } 
-        
-        try {
-            Assert.assertTrue(http.getResponseTime()<2000, "Response time is higher than 2,000 ms");
-        }catch(Exception e) {
-            System.out.println(e);
-        } 
+            softAssert.assertTrue(http.getReasonPhrase().equals("Created"), "Message of status line is wrong");
+
+            softAssert.assertTrue(http.getResponseTime()<2000, "Response time is higher than 2,000 ms");
+            softAssert.assertAll();
+
     }
 }

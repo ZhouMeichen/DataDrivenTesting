@@ -1,5 +1,6 @@
 package steps;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 
@@ -7,17 +8,17 @@ import pageObjects.HomePage;
 import pageObjects.WithdrawalInputPage;
 import pageObjects.WithdrawalPage;
 import util.AlertClass;
-import util.DriverManager;
+
 
 public class WithdrawalSteps {
     WithdrawalInputPage objWithdrawalInput;
     HomePage objHome;
     WithdrawalPage objWithdrawal;
     
-    public WithdrawalSteps() {
-        objWithdrawalInput = PageFactory.initElements(DriverManager.driver, WithdrawalInputPage.class);
-        objHome = PageFactory.initElements(DriverManager.driver, HomePage.class);
-        objWithdrawal = PageFactory.initElements(DriverManager.driver, WithdrawalPage.class);
+    public WithdrawalSteps(WebDriver driver) {
+        objWithdrawalInput = PageFactory.initElements(driver, WithdrawalInputPage.class);
+        objHome = PageFactory.initElements(driver, HomePage.class);
+        objWithdrawal = PageFactory.initElements(driver, WithdrawalPage.class);
     }
     
     public void access() {
@@ -45,8 +46,8 @@ public class WithdrawalSteps {
         return new String[] {objWithdrawalInput.getAccountMsg(), objWithdrawalInput.getAmountMsg(), objWithdrawalInput.getDescMsg()};
     }
     
-    public String getAlertMsg() {
-        return AlertClass.getMsgAccept(DriverManager.driver);
+    public String getAlertMsg(WebDriver driver) {
+        return AlertClass.getMsgAccept(driver);
     }
     
 }

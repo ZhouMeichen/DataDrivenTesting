@@ -1,22 +1,23 @@
 package steps;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import pageObjects.DepositInputPage;
 import pageObjects.DepositPage;
 import pageObjects.HomePage;
 import util.AlertClass;
-import util.DriverManager;
+
 
 public class DepositSteps {
     DepositInputPage objDepositInput;
     HomePage objHome;
     DepositPage objDeposit;
     
-    public DepositSteps() {
-        objDepositInput = PageFactory.initElements(DriverManager.driver, DepositInputPage.class);
-        objHome = PageFactory.initElements(DriverManager.driver, HomePage.class);
-        objDeposit = PageFactory.initElements(DriverManager.driver, DepositPage.class);
+    public DepositSteps(WebDriver driver) {
+        objDepositInput = PageFactory.initElements(driver, DepositInputPage.class);
+        objHome = PageFactory.initElements(driver, HomePage.class);
+        objDeposit = PageFactory.initElements(driver, DepositPage.class);
     }
     
     public void access() {
@@ -44,8 +45,8 @@ public class DepositSteps {
         return new String[] {objDepositInput.getAccountMsg(), objDepositInput.getAmountMsg(), objDepositInput.getDescMsg()};
     }
     
-    public String getAlertMsg() {
-        return AlertClass.getMsgAccept(DriverManager.driver);
+    public String getAlertMsg(WebDriver driver) {
+        return AlertClass.getMsgAccept(driver);
     }
     
 }

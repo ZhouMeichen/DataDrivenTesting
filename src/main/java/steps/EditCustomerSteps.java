@@ -1,5 +1,6 @@
 package steps;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 
@@ -8,7 +9,6 @@ import pageObjects.EditCustomerEnterIDPage;
 import pageObjects.EditCustomerPage;
 import pageObjects.HomePage;
 import util.AlertClass;
-import util.DriverManager;
 
 public class EditCustomerSteps {
     
@@ -17,11 +17,11 @@ public class EditCustomerSteps {
     CustomerUpdateMsgPage ObjCustomerUpdateMsg;
     HomePage objHome;
     
-    public EditCustomerSteps() {
-        objHome = PageFactory.initElements(DriverManager.driver, HomePage.class);
-        objEditCustomerEnterID = PageFactory.initElements(DriverManager.driver, EditCustomerEnterIDPage.class);
-        objEditCustomer = PageFactory.initElements(DriverManager.driver, EditCustomerPage.class);
-        ObjCustomerUpdateMsg = PageFactory.initElements(DriverManager.driver, CustomerUpdateMsgPage.class);
+    public EditCustomerSteps(WebDriver driver) {
+        objHome = PageFactory.initElements(driver, HomePage.class);
+        objEditCustomerEnterID = PageFactory.initElements(driver, EditCustomerEnterIDPage.class);
+        objEditCustomer = PageFactory.initElements(driver, EditCustomerPage.class);
+        ObjCustomerUpdateMsg = PageFactory.initElements(driver, CustomerUpdateMsgPage.class);
     }
     
     public void access(String customerId) {
@@ -76,7 +76,7 @@ public class EditCustomerSteps {
         
     }
     
-    public String getAlertMsg() {
-        return AlertClass.getMsgAccept(DriverManager.driver);
+    public String getAlertMsg(WebDriver driver) {
+        return AlertClass.getMsgAccept(driver);
     }
 }

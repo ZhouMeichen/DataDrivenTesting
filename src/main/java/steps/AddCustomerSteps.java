@@ -1,22 +1,22 @@
 package steps;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import pageObjects.AddCustomerPage;
 import pageObjects.CustomerRegMsgPage;
 import pageObjects.HomePage;
 import util.AlertClass;
-import util.DriverManager;
 
 public class AddCustomerSteps {
     AddCustomerPage objAddCustomer;
     HomePage objHome;
     CustomerRegMsgPage objCustomerRegMsg;
     
-    public AddCustomerSteps() {
-        objHome = PageFactory.initElements(DriverManager.driver, HomePage.class);
-        objAddCustomer = PageFactory.initElements(DriverManager.driver, AddCustomerPage.class);
-        objCustomerRegMsg = PageFactory.initElements(DriverManager.driver, CustomerRegMsgPage.class);
+    public AddCustomerSteps(WebDriver driver) {
+        objHome = PageFactory.initElements(driver, HomePage.class);
+        objAddCustomer = PageFactory.initElements(driver, AddCustomerPage.class);
+        objCustomerRegMsg = PageFactory.initElements(driver, CustomerRegMsgPage.class);
     }
     
     public void access() {
@@ -75,7 +75,7 @@ public class AddCustomerSteps {
         
     }
     
-    public String getAlertMsg() {
-        return AlertClass.getMsgAccept(DriverManager.driver);
+    public String getAlertMsg(WebDriver driver) {
+        return AlertClass.getMsgAccept(driver);
     }
 }

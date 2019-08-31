@@ -1,5 +1,6 @@
 package steps;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import pageObjects.BalEnqInputPage;
@@ -7,17 +8,16 @@ import pageObjects.BalEnquiryPage;
 import pageObjects.HomePage;
 
 import util.AlertClass;
-import util.DriverManager;
 
 public class BalEnquirySteps {
     BalEnqInputPage objBalEnqInput;
     HomePage objHome;
     BalEnquiryPage objBalEnquiry;
     
-    public BalEnquirySteps() {
-        objBalEnqInput = PageFactory.initElements(DriverManager.driver, BalEnqInputPage.class);
-        objHome = PageFactory.initElements(DriverManager.driver, HomePage.class);
-        objBalEnquiry = PageFactory.initElements(DriverManager.driver, BalEnquiryPage.class);
+    public BalEnquirySteps(WebDriver driver) {
+        objBalEnqInput = PageFactory.initElements(driver, BalEnqInputPage.class);
+        objHome = PageFactory.initElements(driver, HomePage.class);
+        objBalEnquiry = PageFactory.initElements(driver, BalEnquiryPage.class);
     }
     
     public void access() {
@@ -41,8 +41,8 @@ public class BalEnquirySteps {
         return new String[] {objBalEnqInput.getAccountMsg()};
     }
     
-    public String getAlertMsg() {
-        return AlertClass.getMsgAccept(DriverManager.driver);
+    public String getAlertMsg(WebDriver driver) {
+        return AlertClass.getMsgAccept(driver);
     }
     
 }

@@ -2,12 +2,12 @@ package com.test;
 
 
 
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import steps.BalEnquirySteps;
 import steps.LoginSteps;
@@ -16,79 +16,66 @@ import util.DataProviderClass;
 import util.DriverManager;
 
 @Listeners(util.Listener.class)
-
 public class TC_BalanceEnquiry {
     DriverManager dm;
     
-    @BeforeClass
-    public void beforeClass() {
-        System.out.println("BeforeClass");   
-        dm = new DriverManager(ConfigProperties.get("defaultBrowser"),ConfigProperties.get("url"));
-        LoginSteps ls = new LoginSteps();
+    @BeforeMethod
+    public void beforeMethod() {
+        System.out.println("BeforeMethod");   
+        dm = new DriverManager();
+        dm.init(ConfigProperties.get("defaultBrowser"),ConfigProperties.get("url"));
+        LoginSteps ls = new LoginSteps(dm.driver);
         ls.login(ConfigProperties.get("username"), ConfigProperties.get("password"));
-
     }
 
     
-    @AfterClass
-    public void afterClass() {
-        System.out.println("AfterClass");
+    @AfterMethod
+    public void afterMethod() {
+        System.out.println("AfterMethod");
         dm.quit();
         
     }
     
     @Test(dataProvider="BalEnquiryValidData",dataProviderClass=DataProviderClass.class, priority = 1)
     public void verifySubmitValidData(String account, String type, String balance, String expMsg) {
-        BalEnquirySteps bs = new BalEnquirySteps();
+        BalEnquirySteps bs = new BalEnquirySteps(dm.driver);
         bs.access();
         
         bs.submit(account);
-        try {
-            Assert.assertTrue(bs.getResultTable()[0].contains(expMsg));
-        }catch(Exception e) {
-            System.out.println(e);
-        } 
-        
-        try {
-            Assert.assertTrue(bs.getResultTable()[1].contains(account));
-        }catch(Exception e) {
-            System.out.println(e);
-        } 
-        
-        try {       
-            Assert.assertTrue(bs.getResultTable()[2].contains(type));
-        }catch(Exception e) {
-            System.out.println(e);
-        } 
-        
-        try {
-            Assert.assertTrue(bs.getResultTable()[3].contains(balance));
-        }catch(Exception e) {
-            System.out.println(e);
-        } 
-    
+        SoftAssert softAssert = new SoftAssert();
+            softAssert.assertTrue(bs.getResultTable()[0].contains(expMsg));
+
+            softAssert.assertTrue(bs.getResultTable()[1].contains(account));
+
+     
+            softAssert.assertTrue(bs.getResultTable()[2].contains(type));
+
+
+            softAssert.assertTrue(bs.getResultTable()[3].contains(balance));
+            
+            softAssert.assertAll();
+
     }
     
     
     @Test(dataProvider="BalEnquiryInvalidData", dataProviderClass=DataProviderClass.class,priority = 2)
     public void verifySubmitInvalidData(String account,String expMsg1, String expMsg2) {
-        BalEnquirySteps bs = new BalEnquirySteps();
+        BalEnquirySteps bs = new BalEnquirySteps(dm.driver);
         bs.access();
         
         bs.submit(account);
 
-        String str = bs.getAlertMsg();
-        try {
-            Assert.assertTrue(str.contains(expMsg1));
-        }catch(Exception e) {
-            System.out.println(e);
-        }
+        String str = bs.getAlertMsg(dm.driver);
+        SoftAssert softAssert = new SoftAssert();
+
+        softAssert.assertTrue(str.contains(expMsg1));
+
         
-        try {
-            Assert.assertTrue(bs.getInvalidDataMsg()[0].contains(expMsg2));
-        }catch(Exception e) {
-            System.out.println(e);
-        }
+
+        softAssert.assertTrue(bs.getInvalidDataMsg()[0].contains(expMsg2));
+        
+        softAssert.assertAll();
+
         
     }
     

@@ -1,22 +1,22 @@
 package steps;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import pageObjects.AccCreateMsgPage;
 import pageObjects.AddAccountPage;
 import pageObjects.HomePage;
 import util.AlertClass;
-import util.DriverManager;
 
 public class AddAccountSteps {
     AddAccountPage objAddAccount;
     HomePage objHome;
     AccCreateMsgPage objAccCreateMsg;
     
-    public AddAccountSteps() {
-        objAddAccount = PageFactory.initElements(DriverManager.driver, AddAccountPage.class);
-        objHome = PageFactory.initElements(DriverManager.driver, HomePage.class);
-        objAccCreateMsg = PageFactory.initElements(DriverManager.driver, AccCreateMsgPage.class);
+    public AddAccountSteps(WebDriver driver) {
+        objAddAccount = PageFactory.initElements(driver, AddAccountPage.class);
+        objHome = PageFactory.initElements(driver, HomePage.class);
+        objAccCreateMsg = PageFactory.initElements(driver, AccCreateMsgPage.class);
     }
     
     public void access() {
@@ -51,8 +51,8 @@ public class AddAccountSteps {
         return new String[] {objAddAccount.getIdMsg(), objAddAccount.getAmountMsg()};
     }
     
-    public String getAlertMsg() {
-        return AlertClass.getMsgAccept(DriverManager.driver);
+    public String getAlertMsg(WebDriver driver) {
+        return AlertClass.getMsgAccept(driver);
     }
     
 }

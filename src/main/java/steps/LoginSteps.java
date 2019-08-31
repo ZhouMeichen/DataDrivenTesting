@@ -1,19 +1,19 @@
 package steps;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
 import util.AlertClass;
-import util.DriverManager;
 
 public class LoginSteps {
     LoginPage objLogin;
     HomePage objHome;
     
-    public LoginSteps() {
-        objLogin = PageFactory.initElements(DriverManager.driver, LoginPage.class);
-        objHome = PageFactory.initElements(DriverManager.driver, HomePage.class);
+    public LoginSteps(WebDriver driver) {
+        objLogin = PageFactory.initElements(driver, LoginPage.class);
+        objHome = PageFactory.initElements(driver, HomePage.class);
     }
     
     public void login(String strTxtUid, String strTxtPwd){
@@ -29,8 +29,8 @@ public class LoginSteps {
         objLogin.clickPwd();
     }
     
-    public String getAlertMsg() {
-        return AlertClass.getMsgAccept(DriverManager.driver);
+    public String getAlertMsg(WebDriver driver) {
+        return AlertClass.getMsgAccept(driver);
     }
     
     public String getLogoutLink() {

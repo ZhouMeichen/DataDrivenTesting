@@ -7,9 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverManager {
-    public static WebDriver driver;
+    public WebDriver driver;
     
-    public DriverManager(String browser, String initUrl) {
+    public void init(String browser, String initUrl) {
         if (browser.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", "Chromedriver.exe");
             driver = new ChromeDriver();
